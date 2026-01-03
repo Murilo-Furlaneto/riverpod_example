@@ -115,7 +115,7 @@ ElevatedButton(
 class AlgodaoDoce extends _$AlgodaoDoce {
   @override
   Future<String> build() async {
-    await Future.delayed(Duration(seconds: 2)); // finge que tá fazendo
+    await Future.delayed(Duration(seconds: 2));
     return "Algodão-doce rosa pronto! 🍭";
   }
 }
