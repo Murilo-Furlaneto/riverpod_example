@@ -10,8 +10,7 @@ class PostScreen extends ConsumerWidget {
     final postsAsync = ref.watch(postsProvider);
 
     ref.listen(postsProvider, (previous, next) {
-      if (next is AsyncData) {
-      }
+      if (next is AsyncData) {}
     });
 
     return Scaffold(
@@ -28,39 +27,44 @@ class PostScreen extends ConsumerWidget {
       ),
       body: postsAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, stack) => Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Erro: $error', style: const TextStyle(color: Colors.red)),
-              ElevatedButton(
-                onPressed: () => ref.read(postsProvider.notifier).refresh(),
-                child: const Text('Tentar novamente'),
+        error:
+            (error, stack) => Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Erro: $error',
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                  ElevatedButton(
+                    onPressed: () => ref.read(postsProvider.notifier).refresh(),
+                    child: const Text('Tentar novamente'),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        data: (posts) => RefreshIndicator(
-          onRefresh: () => ref.read(postsProvider.notifier).refresh(),
-          child: ListView.builder(
-            itemCount: posts.length,
-            itemBuilder: (context, index) {
-              final post = posts[index];
-              return ListTile(
-                title: Text(post.title),
-                subtitle: Text(
-                  post.body,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                leading: CircleAvatar(child: Text('${post.id}')),
-              );
-            },
-          ),
-        ),
+            ),
+        data:
+            (posts) => RefreshIndicator(
+              onRefresh: () => ref.read(postsProvider.notifier).refresh(),
+              child: ListView.builder(
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  final post = posts[index];
+                  return ListTile(
+                    title: Text(post.title),
+                    subtitle: Text(
+                      post.body,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    leading: CircleAvatar(child: Text('${post.id}')),
+                  );
+                },
+              ),
+            ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => ref.invalidate(postsProvider), 
+        onPressed: () => ref.invalidate(postsProvider),
         tooltip: 'Invalidar cache imediatamente',
         child: const Icon(Icons.clear),
       ),

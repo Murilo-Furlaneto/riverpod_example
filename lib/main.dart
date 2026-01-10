@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_example/screen/post_screen.dart';
 import 'package:riverpod_example/screen/shop_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
         useMaterial3: true,
       ),
-      home: const ShopScreen(),
+      home: const PostScreen(),
     );
   }
 }

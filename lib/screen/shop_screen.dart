@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../data/products_data.dart';
+import '../data/mocks/products_data.dart';
 import '../provider/cart_provider.dart';
 
 class ShopScreen extends ConsumerWidget {

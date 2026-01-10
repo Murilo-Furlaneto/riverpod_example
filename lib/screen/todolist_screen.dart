@@ -20,7 +20,6 @@ class TodolistScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          // Campo para adicionar nova tarefa
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(

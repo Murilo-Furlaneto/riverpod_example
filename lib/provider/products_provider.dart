@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_example/data/products_data.dart';
+import 'package:riverpod_example/data/mocks/products_data.dart';
 import 'package:riverpod_example/model/product.dart';
 
 
