@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_example/screen/photo_screen.dart';
 import 'package:riverpod_example/screen/post_screen.dart';
 import 'package:riverpod_example/screen/shop_screen.dart';
+import 'package:riverpod_example/screen/viacep_screen.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.indigo,
         useMaterial3: true,
       ),
-      home: const PhotoScreen(),
+      home: const ViacepScreen(),
     );
   }
 }
