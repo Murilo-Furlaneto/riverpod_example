@@ -48,7 +48,7 @@ final class PostRepositoryProvider
   }
 }
 
-String _$postRepositoryHash() => r'c2dd467ec7a6f4e6037a0ac545ba6d7524a0458f';
+String _$postRepositoryHash() => r'8b77a458fb6ac997316fc1a3cbb8aee1688ec0dd';
 
 @ProviderFor(viaCepRepository)
 const viaCepRepositoryProvider = ViaCepRepositoryProvider._();
@@ -94,4 +94,4 @@ final class ViaCepRepositoryProvider
   }
 }
 
-String _$viaCepRepositoryHash() => r'a351f6d2b41414262aeedf56028da612cac582b8';
+String _$viaCepRepositoryHash() => r'af295896fa91095f1ce0d1e184cca1af327e8053';
