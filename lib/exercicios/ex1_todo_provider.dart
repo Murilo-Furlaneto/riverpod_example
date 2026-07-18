@@ -21,6 +21,6 @@ class TodoList extends _$TodoList {
   void addTodo(String task) {
     // CORRIJA AQUI: O erro está na forma como o estado é atualizado.
     // Dica: Você deve criar uma NOVA lista com os itens antigos + o novo.
-    state.add(task); 
+    state = [...state, task];
   }
 }

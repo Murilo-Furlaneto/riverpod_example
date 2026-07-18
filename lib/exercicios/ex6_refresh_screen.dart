@@ -29,6 +29,7 @@ class Ex6RefreshScreen extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+          ref.invalidate(randomNumberProvider);
           /* 
             DESAFIO: Quando clicar aqui, o número deve ser gerado novamente.
             Por padrão, o FutureProvider guarda o valor em cache.

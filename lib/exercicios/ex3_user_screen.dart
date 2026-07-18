@@ -29,16 +29,16 @@ class Ex3UserScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Desafio 3: AsyncValue')),
-      body: Center(
-        // ERRO: Acessar .value diretamente é perigoso em estados assíncronos.
-        // CORRIJA AQUI: Use o método '.when()' do userAsync para tratar:
-        // 1. data: (o que mostrar quando o dado chegar)
-        // 2. error: (o que mostrar se der erro)
-        // 3. loading: (o que mostrar enquanto carrega)
-        child: Text(
-          'Usuário: ${userAsync.value}', 
-          style: const TextStyle(fontSize: 24),
-        ),
+      body: userAsync.when(
+        data:
+            (data) => Center(
+              child: Text(
+                'Usuário: ${data}',
+                style: const TextStyle(fontSize: 24),
+              ),
+            ),
+        error: (error, stackTrace) => Center(child: Text("Error: $error ")),
+        loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );
   }

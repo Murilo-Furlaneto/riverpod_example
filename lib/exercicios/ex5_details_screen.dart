@@ -23,7 +23,7 @@ class Ex5DetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // DESAFIO: Como chamar o fetchUserDetailProvider passando o ID 42?
     // Dica: No Riverpod 3.0, você chama como uma função: provider(parametro)
-    final userAsync = ref.watch(fetchUserDetailProvider(0)); // CORRIJA O ID PARA 42
+    final userAsync = ref.watch(fetchUserDetailProvider(42)); // CORRIJA O ID PARA 42
 
     return Scaffold(
       appBar: AppBar(title: const Text('Desafio 5: Parâmetros')),

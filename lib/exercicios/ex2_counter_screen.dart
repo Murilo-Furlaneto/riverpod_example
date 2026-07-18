@@ -26,7 +26,7 @@ class Ex2CounterScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ERRO: Você está usando 'read'. O 'read' lê o valor uma única vez e ignora mudanças futuras.
     // CORRIJA AQUI: Qual método faz o widget "observar" e "reconstruir" quando o valor muda?
-    final count = ref.read(simpleCounterProvider);
+    final count = ref.watch(simpleCounterProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Desafio 2: Contador')),

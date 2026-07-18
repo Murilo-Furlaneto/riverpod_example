@@ -20,10 +20,10 @@ final _allUsers = ['Alice', 'Bob', 'Charlie', 'David', 'Eve'];
 List<String> filteredUsers(Ref ref) {
   // DESAFIO: Este provider deve "observar" o searchTermProvider.
   // Se o termo mudar, esta lista deve ser filtrada automaticamente.
-  
+
   // Dica: Use ref.watch(searchTermProvider)
-  final search = ''; // CORRIJA AQUI
-  
+  final search = ref.watch(searchTermProvider); // CORRIJA AQUI
+
   return _allUsers
       .where((u) => u.toLowerCase().contains(search.toLowerCase()))
       .toList();
@@ -45,6 +45,7 @@ class Ex4FilterScreen extends ConsumerWidget {
             child: TextField(
               onChanged: (val) {
                 // CORRIJA AQUI: Atualize o searchTermProvider
+                ref.read(searchTermProvider.notifier).update(val);
               },
               decoration: const InputDecoration(labelText: 'Buscar usuário...'),
             ),
