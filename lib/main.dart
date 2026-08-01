@@ -13,6 +13,7 @@ import 'package:riverpod_example/screen/form_screen.dart';
 import 'package:riverpod_example/screen/photo_screen.dart';
 import 'package:riverpod_example/screen/post_screen.dart';
 import 'package:riverpod_example/screen/shop_screen.dart';
+import 'package:riverpod_example/screen/shopping_screen.dart';
 import 'package:riverpod_example/screen/viacep_screen.dart';
 
 void main() {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Carrinho com Riverpod',
       debugShowCheckedModeBanner: false,
       theme:ThemeData() ,
-      home:  CounterScreenEx(),
+      home: const ShoppingScreen(),
     );
   }
 }
