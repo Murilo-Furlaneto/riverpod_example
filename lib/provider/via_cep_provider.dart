@@ -1,5 +1,4 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:riverpod_example/data/repository/viacep_repository.dart';
 import 'package:riverpod_example/model/viacep_model.dart';
 import 'package:riverpod_example/provider/providers.dart';
 

@@ -141,3 +141,58 @@ ref.watch(algodaoDoceProvider).when(
 | NotifierProvider (+ @riverpod) | Jeito moderno e bonito de mudar coisas    | Controle mágico novo             |
 | AsyncNotifierProvider          | Coisas que vêm da internet ou demoram     | Esperar algodão-doce ficar pronto|
 
+### 7. `.family` (providers com parâmetros)
+
+O `.family` permite criar providers parametrizados. Cada argumento identifica uma instância de estado, por exemplo, os dados de um usuário específico.
+
+#### Com Riverpod Generator
+
+Se você usa `riverpod_annotation` e `build_runner`, não precisa declarar `.family` manualmente. Basta adicionar parâmetros à função ou ao método `build`; o gerador cria a família automaticamente:
+
+```dart
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'usuario_provider.g.dart';
+
+@riverpod
+Future<Usuario> buscarUsuario(Ref ref, int userId) async {
+  final repository = ref.watch(usuarioRepositoryProvider);
+  return repository.getById(userId);
+}
+```
+
+#### Sem geração de código
+
+Na sintaxe clássica, adicione `.family` ao tipo do provider e informe o tipo do valor retornado e o tipo do parâmetro:
+
+```dart
+final buscarUsuarioProvider =
+    FutureProvider.family<Usuario, int>((ref, userId) async {
+  final repository = ref.watch(usuarioRepositoryProvider);
+  return repository.getById(userId);
+});
+```
+
+#### Consumindo na UI
+
+Use o provider como uma função e passe o argumento para `ref.watch` ou `ref.read`:
+
+```dart
+class PerfilScreen extends ConsumerWidget {
+  final int userId;
+
+  const PerfilScreen({super.key, required this.userId});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final usuarioAsync = ref.watch(buscarUsuarioProvider(userId));
+
+    return usuarioAsync.when(
+      data: (usuario) => Text('Olá, ${usuario.nome}'),
+      loading: () => const CircularProgressIndicator(),
+      error: (err, stack) => Text('Erro: $err'),
+    );
+  }
+}
+```
+

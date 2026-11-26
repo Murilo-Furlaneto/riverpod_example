@@ -33,7 +33,7 @@ class Ex3UserScreen extends ConsumerWidget {
         data:
             (data) => Center(
               child: Text(
-                'Usuário: ${data}',
+                'Usuário: $data',
                 style: const TextStyle(fontSize: 24),
               ),
             ),
